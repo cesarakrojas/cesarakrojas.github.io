@@ -1,8 +1,143 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="es">
-
+<html lang="es">
 <head>
-    <meta http-equiv="Refresh" content="0; url='https://forms.office.com/r/3Gp1zRLgzK'" />
-    <title>Pre-Registro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Curso Excel Desde Cero</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .form-container {
+  background: rgb(240, 244, 242); /* Updated background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; /* Sets the maximum width of the form container */
+  }
+  .form-header {
+    background-color: #107C41;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px; /* Aligns the header with the outer edges of the form */
+  }
+  .form-field {
+    margin-bottom: 15px;
+  }
+  .form-field label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form-field input[type=text],
+  .form-field input[type=email],
+  .form-field input[type=submit] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding in the width calculation */
+  }
+  .form-field input[type=checkbox] {
+    margin-right: 10px;
+  }
+  .form-field input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .form-field input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  @media (max-width: 768px) {
+    .form-container {
+      margin: 20px;
+      height: auto;
+    }
+    .form-header {
+      margin: -20px -20px 20px -20px;
+    }
+  }
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* adjust as needed */
+}
+
+.checkbox-group label {
+  margin-left: 2px; /* space between the checkbox and the label */
+}
+.submit-button {
+  background-color: #107C41; /* This is the green color shown in the image */
+  color: white;
+  font-weight: bold;
+  padding: 15px 30px; /* Adjust padding to change the size of the button */
+  border: none;
+  border-radius: 20px; /* This gives the button rounded edges */
+  cursor: pointer;
+  font-size: 16px; /* Adjust font size as needed */
+  display: block; /* This makes it a block element */
+  width: fit-content; /* This allows the button to fit its content */
+  margin: 0 auto; /* This centers the button in the form */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.submit-button:hover {
+  background-color: #367C39; /* Slightly darker shade of green for hover effect */
+}
+</style>
 </head>
+<body>
+
+<div class="form-container">
+  <div class="form-header">
+    <h2>MEGA CURSO EXCEL DESDE CERO</h2>
+    <p>¿Quieres que te avisemos apenas ABRAMOS inscripciones? DEJANOS TUS DATOS PARA AVISARTE DE LA PRONTA APERTURA.</p>
+  </div>
+  
+  <form action="YOUR_SCRIPT_URL" method="post">
+    <div class="form-field">
+      <label for="name">Nombre</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-field">
+  <label>Curso de interés</label>
+  <div class="checkbox-group">
+    <input type="checkbox" id="basic" name="interest" value="Básico">
+    <label for="basic">Básico</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="intermediate" name="interest" value="Intermedio">
+    <label for="intermediate">Intermedio</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="advanced" name="interest" value="Avanzado">
+    <label for="advanced">Avanzado</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="complete" name="interest" value="COMPLETO">
+    <label for="complete">COMPLETO</label>
+  </div>
+</div>
+    <input type="submit" value="Enviar" class="submit-button">
+  </form>
+</div>
+
+</body>
 </html>
+
