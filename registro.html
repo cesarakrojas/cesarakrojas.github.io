@@ -103,14 +103,13 @@ text-align: center;
 </style>
 </head>
 <body>
-
 <div class="form-container">
   <div class="form-header">
     <h2>MEGA CURSO EXCEL DESDE CERO</h2>
     <p>¿Quieres que te avisemos apenas ABRAMOS inscripciones? DEJANOS TUS DATOS PARA AVISARTE DE LA PRONTA APERTURA.</p>
   </div>
   
-  <form action="YOUR_SCRIPT_URL" method="post">
+  <form>
     <div class="form-field">
       <label for="name">Nombre</label>
       <input type="text" id="name" name="name" required>
@@ -136,13 +135,60 @@ text-align: center;
   <div class="checkbox-group">
     <input type="checkbox" id="complete" name="interest" value="COMPLETO">
     <label for="complete">COMPLETO</label>
-  </div>
+  </div> 
 </div>
     <input type="submit" value="Enviar" class="submit-button">
     <p style="font-size: 12px; color: #000000  ;"><strong>🔒 Al darle click en enviar, aceptas la recopilación y el uso de tus datos para temas de promoción e informarle acerca de nuestros productos de acuerdo con nuestra <a href="https://www.excelsistemas.com/privacidad">Política de Privacidad</a>.</strong></p>
   </form>
 </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFseq2YUFunfnn9x9_Ft-ptBtDAOfywmo",
+    authDomain: "excel-sistemas.firebaseapp.com",
+    databaseURL: "https://excel-sistemas-default-rtdb.firebaseio.com",
+    projectId: "excel-sistemas",
+    storageBucket: "excel-sistemas.appspot.com",
+    messagingSenderId: "406800025466",
+    appId: "1:406800025466:web:6e8b11e4b271499c39f8c3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+// Get form elements
+const form = document.querySelector('form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const checkboxes = document.querySelectorAll('input[name="interest"]'); // New
+
+// Handle form submission
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  // Get input values
+  const name = nameInput.value;
+  const email = emailInput.value;
+  
+  // Get checked checkboxes
+  const interests = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value); // New
+
+  // Create a key from the name and email
+  var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
+
+  // Save data to Firebase
+  set(ref(db, 'users/' + key), {
+    username: name,
+    email: email,
+    interests: interests, // New
+  });
+ form.reset();
+});
+</script>
 </body>
 </html>
-
