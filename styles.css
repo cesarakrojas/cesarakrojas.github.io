@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     width: 100vw;
     font-family: Verdana, Tahoma, sans-serif;
+    justify-content: space-between;
 }
 
 header {
@@ -39,6 +40,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 6rem !important;
 }
 
 h1 {
@@ -78,7 +80,6 @@ a {
     margin-top: 10px;
 }
 
-
 .image-container {
     height: 96px;
     width: 96px;
@@ -94,4 +95,40 @@ a {
     margin: 4px 8px;
     width: 44px;
     height: 44px;
+}
+
+p {
+    font-weight: bold;
+}
+
+body {
+    background-color: rgb(240, 244, 242);
+    color: rgb(0, 176, 80);
+}
+
+.tile {
+    background-color: #00B050;
+}
+
+.share-button {
+    background-color: #00B050;
+}
+
+.share-button svg {
+    margin-left: 6px;
+    margin-top: 6px;
+}
+
+.normal {
+    color: black;
+}
+
+.legal {
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Push the .legal div to the bottom */
+}
+
+.legal li {
+    margin-right: 10px; /* Adjust as needed */
 }
