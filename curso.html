@@ -108,7 +108,7 @@ text-align: center;
     <h2>MEGA CURSO EXCEL DESDE CERO</h2>
     <p>¿QUIERES QUE TE AVISEMOS DE LAS PRÓXIMAS INSCRIPCIONES? DÉJANOS TUS DATOS PARA AVISARTE DE LA PRONTA APERTURA😎</p>
   </div>
-  
+  <div id="message"></div>  
   <form>
     <div class="form-field">
       <label for="name">Nombre</label>
@@ -186,9 +186,14 @@ form.addEventListener('submit', (e) => {
     username: name,
     email: email,
     interests: interests, // New
+ }).then(() => {
+    // This will run when the data is successfully written to Firebase
+    document.getElementById('message').innerHTML = 'Form submitted successfully!';
+    form.reset();
+  }).catch((error) => {
+    // This will run if there was an error
+    document.getElementById('message').innerHTML = 'Error: ' + error.message;
   });
- form.reset();
-});
 </script>
 </body>
 </html>
