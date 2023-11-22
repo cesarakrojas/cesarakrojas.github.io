@@ -100,6 +100,21 @@
   p {
 text-align: center;
 }
+#form-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  #form-message.success {
+    color: white;
+    background-color: green;
+  }
+
+  #form-message.error {
+    color: white;
+    background-color: red;
+  }
 </style>
 </head>
 <body>
@@ -190,15 +205,15 @@ form.addEventListener('submit', (e) => {
     interests: interests, // New
   })
   .then(() => {
-      formMessage.textContent = 'Form submitted successfully!'; // New
+      formMessage.textContent = '✅Enviado con éxito, te mantendremos al tanto!'; // New
+      formMessage.className = 'success';
       formMessage.style.display = 'block'; // New
-      formMessage.style.color = 'green'; // New
       form.reset();
     })
     .catch((error) => {
-      formMessage.textContent = 'An error occurred: ' + error.message; // New
+      formMessage.textContent = 'Ha ocurrido un error: ' + error.message; // New
+      formMessage.className = 'error';
       formMessage.style.display = 'block'; // New
-      formMessage.style.color = 'red'; // New
     });
   });
 </script>
