@@ -74,6 +74,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px; /* adjust as needed */
+  margin-top: 15px;
 }
 
 .checkbox-group label {
@@ -120,7 +121,7 @@ text-align: center;
 <body>
 <div class="form-container">
   <div class="form-header">
-    <h2 style="text-shadow: 0 0 3px #fff, 0 0 1px #fff, 0 0 0px #fff;">
+    <h2 style="text-shadow: 0 0 4px #fff, 0 0 2px #fff, 0 0 0px #fff;">
     MEGA CURSO EXCEL DESDE CERO
 </h2>
     <p style="font-weight: 550;">📣¿Quieres que te avisemos de las próximas inscripciones? Déjanos tus datos para avisarte de la pronta apertura😎</p>
@@ -136,23 +137,15 @@ text-align: center;
       <input type="email" id="email" name="email" required>
     </div>
     <div class="form-field">
-  <label>Curso de interés</label>
+  <label>Modalidad de curso deseada</label>
   <div class="checkbox-group">
-    <input type="checkbox" id="basic" name="interest" value="Básico">
-    <label for="basic">Básico</label>
+    <input type="checkbox" id="basic" name="interest" value="Pregrabado">
+    <label for="basic">Pregrabado a tu ritmo</label>
   </div>
   <div class="checkbox-group">
-    <input type="checkbox" id="intermediate" name="interest" value="Intermedio">
-    <label for="intermediate">Intermedio</label>
+    <input type="checkbox" id="intermediate" name="interest" value="En Vivo">
+    <label for="intermediate">Online en Vivo</label>
   </div>
-  <div class="checkbox-group">
-    <input type="checkbox" id="advanced" name="interest" value="Avanzado">
-    <label for="advanced">Avanzado</label>
-  </div>
-  <div class="checkbox-group">
-    <input type="checkbox" id="complete" name="interest" value="COMPLETO">
-    <label for="complete">COMPLETO</label>
-  </div> 
 </div>
     <input type="submit" value="Enviar" class="submit-button">
     <p id="form-message" style="display: none;"></p>
