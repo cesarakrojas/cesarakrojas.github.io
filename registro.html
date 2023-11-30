@@ -3,9 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="assets/img/logo%20excelsistemas%20linkedin.png"">
+<link rel="icon" type="image/x-icon" href="assets/img/logo%20excelsistemas%20linkedin.png">
 <title>Mega Curso Excel Desde Cero</title>
 <style>
+.container {
+    display: flex;
+    align-items: center; /* Aligns the dot and text vertically */
+    text-align: center;
+  }  
+
+.green-dot {
+    width: 20px;
+    height: 20px;
+    background-color: #00ff00; /* Darker green base color */
+    border-radius: 50%;
+    transition: box-shadow 0.5s ease, background-color 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 0 25px #00ff00; /* Subtle glow effect */
+  }
+ .dot-text {
+    margin-left: 10px; /* Spacing between the dot and the text */
+    font-size: 20px;
+    color: white; /* White color for the text */
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      text-shadow: 0 0 4px #fff, 0 0 2px #fff, 0 0 0px #fff;
+    }
+    50% {
+        text-shadow: 0 0 5px #fff, 0 0 3px #fff, 0 0 1px #fff;
+    }
+}
   body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
@@ -120,36 +150,47 @@ text-align: center;
 </head>
 <body>
 <div class="form-container">
-  <div class="form-header">
-    <h2 style="text-shadow: 0 0 3px #fff, 0 0 2px #fff, 0 0 0px #fff;">
-    MEGA CURSO EXCEL DESDE CERO
+  <div class="form-header"> 
+<div class="container">
+  <div class="green-dot"></div>
+  <span class="dot-text">Online en vivo</span>
+</div>    
+<h2 style="text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 0px #fff;">
+  MEGA CURSO EXCEL DESDE CERO
 </h2>
-    <p style="font-weight: 550;">📣¿Quieres que te avisemos de las próximas inscripciones? Déjanos tus datos para avisarte de la pronta apertura😎</p>
-  </div>
-  
+    <h3 style="font-weight: 550;">🎓Regístrate para avisarte de nuestros próximos cursos y talleres 100% prácticos y con Certificado.</h3> 
+</div>  
   <form>
     <div class="form-field">
-      <label for="name">Nombre:</label>
+      <label for="name">Nombre</label>
       <input type="text" id="name" name="name" required>
     </div>
     <div class="form-field">
-      <label for="email">Correo Electrónico:</label>
+      <label for="email">Correo Electrónico</label>
       <input type="email" id="email" name="email" required>
     </div>
     <div class="form-field">
-  <label>Modalidad Deseada:</label>
+  <label>Curso Deseado</label>
   <div class="checkbox-group">
-    <input type="checkbox" id="basic" name="interest" value="Pregrabado">
-    <label for="basic">Curso Pregrabado a tu ritmo</label>
+    <input type="checkbox" id="basic" name="interest" value="basico">
+    <label for="basic">Excel Básico</label>
   </div>
   <div class="checkbox-group">
-    <input type="checkbox" id="intermediate" name="interest" value="En Vivo">
-    <label for="intermediate">Curso Online en Vivo</label>
+    <input type="checkbox" id="intermediate" name="interest" value="intermedio">
+    <label for="intermediate">Excel Intermedio</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="advanced" name="interest" value="avanzado">
+    <label for="advanced">Excel Avanzado</label>
+  </div>
+  <div class="checkbox-group">
+    <input type="checkbox" id="data" name="interest" value="datos">
+    <label for="data">Excel para Análisis de datos</label>
   </div>
 </div>
     <input type="submit" value="Enviar" class="submit-button">
     <p id="form-message" style="display: none;"></p>
-    <p style="font-size: 12px; color: #000000  ;"><strong>🔒 Al darle click en enviar, aceptas recibir actualizaciones con fines de informarte acerca de nuestros productos y servicios de acuerdo con nuestra <a href="https://www.excelsistemas.com/privacidad">Política de Privacidad</a>.</strong></p>
+    <p style="font-size: 12px; color: #000000  ;"><strong>🔒 Al darle click en enviar, aceptas recibir información o promociones sobre nuestros productos y servicios de acuerdo con nuestra <a href="https://www.excelsistemas.com/privacidad">Política de Privacidad</a>.</strong></p>
   </form>
 </div>
 <script type="module">
