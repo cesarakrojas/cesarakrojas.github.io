@@ -196,7 +196,7 @@ text-align: center;
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+import { getDatabase, ref, set, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
   // Your web app's Firebase configuration
   const firebaseConfig = {
@@ -231,6 +231,9 @@ form.addEventListener('submit', (e) => {
   // Get checked checkboxes
   const interests = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value); // New
 
+  // Use serverTimestamp to get the current server time
+  const timestamp = serverTimestamp();  
+    
   // Create a key from the name and email
   var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
 
@@ -239,6 +242,7 @@ form.addEventListener('submit', (e) => {
     username: name,
     email: email,
     interests: interests, // New
+    timestamp: timestamp,
   })
   .then(() => {
       formMessage.textContent = '✅Enviado con éxito, te mantendremos al tanto!'; // New
