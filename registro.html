@@ -153,12 +153,12 @@ text-align: center;
   <div class="form-header"> 
 <div class="container">
   <div class="green-dot"></div>
-  <span class="dot-text">Con Soporte en Vivo</span>
+  <span class="dot-text">Cursos Online</span>
 </div>    
 <h2 style="text-shadow: 0 0 1px #fff, 0 0 1px #fff, 0 0 0px #fff;">
   ESTE 2024 APRENDE Y DOMINA EXCEL
 </h2>
-    <h3 style="font-weight: 550;">🎓Regístrate para avisarte de nuestros próximos cursos y talleres 100% prácticos en vivo con certificado.</h3> 
+    <h3 style="font-weight: 550;">🎓Regístrate para avisarte de nuestros próximos cursos paso a paso 100% prácticos con Certificado.</h3> 
 </div>  
   <form>
     <div class="form-field">
@@ -169,25 +169,6 @@ text-align: center;
       <label for="email">Correo Electrónico</label>
       <input type="email" id="email" name="email" required>
     </div>
-    <div class="form-field">
-  <label>Curso De Interés</label>
-  <div class="checkbox-group">
-    <input type="checkbox" id="basic" name="interest" value="basico">
-    <label for="basic">Excel Básico</label>
-  </div>
-  <div class="checkbox-group">
-    <input type="checkbox" id="intermediate" name="interest" value="intermedio">
-    <label for="intermediate">Excel Intermedio</label>
-  </div>
-  <div class="checkbox-group">
-    <input type="checkbox" id="advanced" name="interest" value="avanzado">
-    <label for="advanced">Excel Avanzado</label>
-  </div>
-  <div class="checkbox-group">
-    <input type="checkbox" id="data" name="interest" value="datos">
-    <label for="data">Excel para Análisis de datos</label>
-  </div>
-</div>
     <input type="submit" value="Enviar" class="submit-button">
     <p id="form-message" style="display: none;"></p>
     <p style="font-size: 12px; color: #000000  ;"><strong>🔒 Al darle click en enviar, aceptas recibir información sobre nuestros productos y servicios de acuerdo con nuestra <a href="https://www.excelsistemas.com/privacidad">Política de Privacidad</a>.</strong></p>
@@ -218,8 +199,7 @@ const form = document.querySelector('form');
 const formMessage = document.querySelector('#form-message');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
-const checkboxes = document.querySelectorAll('input[name="interest"]'); // New
-
+    
 // Handle form submission
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -228,9 +208,6 @@ form.addEventListener('submit', (e) => {
   const name = nameInput.value;
   const email = emailInput.value;
   
-  // Get checked checkboxes
-  const interests = Array.from(checkboxes).filter(checkbox => checkbox.checked).map(checkbox => checkbox.value); // New
-
   // Use serverTimestamp to get the current server time
   const timestamp = serverTimestamp();  
     
@@ -241,7 +218,6 @@ form.addEventListener('submit', (e) => {
   set(ref(db, 'users/' + key), {
     username: name,
     email: email,
-    interests: interests, // New
     timestamp: timestamp,
   })
   .then(() => {
