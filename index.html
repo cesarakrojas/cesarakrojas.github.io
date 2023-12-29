@@ -176,30 +176,30 @@ text-align: center;
 </div>
 <script type="module">
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import { getDatabase, ref, set, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDFseq2YUFunfnn9x9_Ft-ptBtDAOfywmo",
-    authDomain: "excel-sistemas.firebaseapp.com",
-    databaseURL: "https://excel-sistemas-default-rtdb.firebaseio.com",
-    projectId: "excel-sistemas",
-    storageBucket: "excel-sistemas.appspot.com",
-    messagingSenderId: "406800025466",
-    appId: "1:406800025466:web:6e8b11e4b271499c39f8c3"
-  };
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDFseq2YUFunfnn9x9_Ft-ptBtDAOfywmo",
+  authDomain: "excel-sistemas.firebaseapp.com",
+  databaseURL: "https://excel-sistemas-default-rtdb.firebaseio.com",
+  projectId: "excel-sistemas",
+  storageBucket: "excel-sistemas.appspot.com",
+  messagingSenderId: "406800025466",
+  appId: "1:406800025466:web:6e8b11e4b271499c39f8c3"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 // Get form elements
 const form = document.querySelector('form');
 const formMessage = document.querySelector('#form-message');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
-    
+
 // Handle form submission
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -209,28 +209,12 @@ form.addEventListener('submit', async (e) => {
   const email = emailInput.value;
 
   try {
-    // Use serverTimestamp to get the current server time
-    const timestampPlaceholder = serverTimestamp();
-    
-    // Wait for the placeholder to be replaced by the actual server timestamp
-    const timestampSnapshot = await timestampPlaceholder.once('value');
-    const timestamp = timestampSnapshot.val();
-
-    console.log('Raw Timestamp:', timestamp); // Debugging statement
-
-    // Create a key from the name and email
-    var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
-
-    // Format the timestamp to a human-readable format
-    const formattedTimestamp = formatTimestamp(timestamp);
-
-    console.log('Formatted Timestamp:', formattedTimestamp); // Debugging statement
-
-    // Save data to Firebase
+    // Save data to Firebase with server timestamp
+    const key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
     await set(ref(db, 'users/' + key), {
       username: name,
       email: email,
-      timestamp: formattedTimestamp, // Use the formatted timestamp
+      timestamp: serverTimestamp(), // Use server timestamp directly
     });
 
     formMessage.textContent = '✅ Enviado con éxito, te mantendremos al tanto!';
@@ -265,6 +249,7 @@ function formatTimestamp(timestamp) {
 
   return formattedDate;
 }
+
 </script>
 </body>
 </html>
