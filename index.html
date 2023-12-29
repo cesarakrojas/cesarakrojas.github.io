@@ -207,31 +207,35 @@ form.addEventListener('submit', (e) => {
   // Get input values
   const name = nameInput.value;
   const email = emailInput.value;
-  
+
   // Use serverTimestamp to get the current server time
-  const timestamp = serverTimestamp();  
-    
+  const timestamp = serverTimestamp();
+
   // Create a key from the name and email
   var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
+
+  // Format the timestamp to a human-readable format
+  const formattedTimestamp = formatTimestamp(timestamp);
 
   // Save data to Firebase
   set(ref(db, 'users/' + key), {
     username: name,
     email: email,
-    timestamp: timestamp,
+    timestamp: formattedTimestamp, // Use the formatted timestamp
   })
-  .then(() => {
-      formMessage.textContent = '✅Enviado con éxito, te mantendremos al tanto!'; // New
+    .then(() => {
+      formMessage.textContent = '✅ Enviado con éxito, te mantendremos al tanto!';
       formMessage.className = 'success';
-      formMessage.style.display = 'block'; // New
+      formMessage.style.display = 'block';
       form.reset();
     })
     .catch((error) => {
-      formMessage.textContent = 'Ha ocurrido un error: ' + error.message; // New
+      formMessage.textContent = 'Ha ocurrido un error: ' + error.message;
       formMessage.className = 'error';
-      formMessage.style.display = 'block'; // New
+      formMessage.style.display = 'block';
     });
-  });
+});
+
 // Function to format timestamp to human-readable format
 function formatTimestamp(timestamp) {
   const options = {
@@ -245,6 +249,7 @@ function formatTimestamp(timestamp) {
     timeZone: 'America/New_York',
     timeZoneName: 'short',
   };
+
   return new Date(timestamp).toLocaleString('es-ES', options);
 }
 </script>
