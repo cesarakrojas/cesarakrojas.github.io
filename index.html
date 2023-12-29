@@ -201,43 +201,48 @@ const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
     
 // Handle form submission
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   // Get input values
   const name = nameInput.value;
   const email = emailInput.value;
 
-  // Use serverTimestamp to get the current server time
-  const timestamp = serverTimestamp();
+  try {
+    // Use serverTimestamp to get the current server time
+    const timestampPlaceholder = serverTimestamp();
+    
+    // Wait for the placeholder to be replaced by the actual server timestamp
+    const timestampSnapshot = await timestampPlaceholder.once('value');
+    const timestamp = timestampSnapshot.val();
 
-  console.log('Raw Timestamp:', timestamp); // Debugging statement
+    console.log('Raw Timestamp:', timestamp); // Debugging statement
 
-  // Create a key from the name and email
-  var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
+    // Create a key from the name and email
+    var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
 
-  // Format the timestamp to a human-readable format
-  const formattedTimestamp = formatTimestamp(timestamp);
+    // Format the timestamp to a human-readable format
+    const formattedTimestamp = formatTimestamp(timestamp);
 
-  console.log('Formatted Timestamp:', formattedTimestamp); // Debugging statement
+    console.log('Formatted Timestamp:', formattedTimestamp); // Debugging statement
 
-  // Save data to Firebase
-  set(ref(db, 'users/' + key), {
-    username: name,
-    email: email,
-    timestamp: formattedTimestamp, // Use the formatted timestamp
-  })
-    .then(() => {
-      formMessage.textContent = '✅ Enviado con éxito, te mantendremos al tanto!';
-      formMessage.className = 'success';
-      formMessage.style.display = 'block';
-      form.reset();
-    })
-    .catch((error) => {
-      formMessage.textContent = 'Ha ocurrido un error: ' + error.message;
-      formMessage.className = 'error';
-      formMessage.style.display = 'block';
+    // Save data to Firebase
+    await set(ref(db, 'users/' + key), {
+      username: name,
+      email: email,
+      timestamp: formattedTimestamp, // Use the formatted timestamp
     });
+
+    formMessage.textContent = '✅ Enviado con éxito, te mantendremos al tanto!';
+    formMessage.className = 'success';
+    formMessage.style.display = 'block';
+    form.reset();
+  } catch (error) {
+    console.error('Error:', error);
+    formMessage.textContent = 'Ha ocurrido un error: ' + error.message;
+    formMessage.className = 'error';
+    formMessage.style.display = 'block';
+  }
 });
 
 // Function to format timestamp to human-readable format
