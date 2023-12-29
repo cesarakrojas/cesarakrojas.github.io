@@ -211,11 +211,15 @@ form.addEventListener('submit', (e) => {
   // Use serverTimestamp to get the current server time
   const timestamp = serverTimestamp();
 
+  console.log('Raw Timestamp:', timestamp); // Debugging statement
+
   // Create a key from the name and email
   var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
 
   // Format the timestamp to a human-readable format
   const formattedTimestamp = formatTimestamp(timestamp);
+
+  console.log('Formatted Timestamp:', formattedTimestamp); // Debugging statement
 
   // Save data to Firebase
   set(ref(db, 'users/' + key), {
@@ -250,7 +254,11 @@ function formatTimestamp(timestamp) {
     timeZoneName: 'short',
   };
 
-  return new Date(timestamp).toLocaleString('es-ES', options);
+  const formattedDate = new Date(timestamp).toLocaleString('es-ES', options);
+
+  console.log('Formatted Date Object:', new Date(formattedDate)); // Debugging statement
+
+  return formattedDate;
 }
 </script>
 </body>
