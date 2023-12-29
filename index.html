@@ -232,6 +232,21 @@ form.addEventListener('submit', (e) => {
       formMessage.style.display = 'block'; // New
     });
   });
+// Function to format timestamp to human-readable format
+function formatTimestamp(timestamp) {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZone: 'America/New_York',
+    timeZoneName: 'short',
+  };
+  return new Date(timestamp).toLocaleString('es-ES', options);
+}
 </script>
 </body>
 </html>
