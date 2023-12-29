@@ -176,80 +176,62 @@ text-align: center;
 </div>
 <script type="module">
   // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 import { getDatabase, ref, set, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDFseq2YUFunfnn9x9_Ft-ptBtDAOfywmo",
-  authDomain: "excel-sistemas.firebaseapp.com",
-  databaseURL: "https://excel-sistemas-default-rtdb.firebaseio.com",
-  projectId: "excel-sistemas",
-  storageBucket: "excel-sistemas.appspot.com",
-  messagingSenderId: "406800025466",
-  appId: "1:406800025466:web:6e8b11e4b271499c39f8c3"
-};
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDFseq2YUFunfnn9x9_Ft-ptBtDAOfywmo",
+    authDomain: "excel-sistemas.firebaseapp.com",
+    databaseURL: "https://excel-sistemas-default-rtdb.firebaseio.com",
+    projectId: "excel-sistemas",
+    storageBucket: "excel-sistemas.appspot.com",
+    messagingSenderId: "406800025466",
+    appId: "1:406800025466:web:6e8b11e4b271499c39f8c3"
+  };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
 // Get form elements
 const form = document.querySelector('form');
 const formMessage = document.querySelector('#form-message');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
-
+    
 // Handle form submission
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   // Get input values
   const name = nameInput.value;
   const email = emailInput.value;
+  
+  // Use serverTimestamp to get the current server time
+  const timestamp = serverTimestamp();  
+    
+  // Create a key from the name and email
+  var key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
 
-  try {
-    // Save data to Firebase with server timestamp
-    const key = name + '_' + email.replace(/\./g, '_').replace(/@/g, '_');
-    await set(ref(db, 'users/' + key), {
-      username: name,
-      email: email,
-      timestamp: serverTimestamp(), // Use server timestamp directly
+  // Save data to Firebase
+  set(ref(db, 'users/' + key), {
+    username: name,
+    email: email,
+    timestamp: timestamp,
+  })
+  .then(() => {
+      formMessage.textContent = '✅Enviado con éxito, te mantendremos al tanto!'; // New
+      formMessage.className = 'success';
+      formMessage.style.display = 'block'; // New
+      form.reset();
+    })
+    .catch((error) => {
+      formMessage.textContent = 'Ha ocurrido un error: ' + error.message; // New
+      formMessage.className = 'error';
+      formMessage.style.display = 'block'; // New
     });
-
-    formMessage.textContent = '✅ Enviado con éxito, te mantendremos al tanto!';
-    formMessage.className = 'success';
-    formMessage.style.display = 'block';
-    form.reset();
-  } catch (error) {
-    console.error('Error:', error);
-    formMessage.textContent = 'Ha ocurrido un error: ' + error.message;
-    formMessage.className = 'error';
-    formMessage.style.display = 'block';
-  }
-});
-
-// Function to format timestamp to human-readable format
-function formatTimestamp(timestamp) {
-  const options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    timeZone: 'America/New_York',
-    timeZoneName: 'short',
-  };
-
-  const formattedDate = new Date(timestamp).toLocaleString('es-ES', options);
-
-  console.log('Formatted Date Object:', new Date(formattedDate)); // Debugging statement
-
-  return formattedDate;
-}
-
+  });
 </script>
 </body>
 </html>
