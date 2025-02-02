@@ -96,34 +96,46 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/startup-modern.js"></script>
     <script>
-        const form = document.getElementById('myForm'); // Get the form by its ID
-    
-        form.addEventListener('submit', function(event) {
-          event.preventDefault(); // Prevent the default form submission
-    
-          const formData = new FormData(form); // Create a FormData object
-    
+      const form = document.getElementById('myForm');
+      const submitButton = form.querySelector('button[type="submit"]'); // Get the submit button
+  
+      form.addEventListener('submit', function(event) {
+          event.preventDefault();
+  
+          // Disable the button and change its text
+          submitButton.disabled = true;
+          submitButton.textContent = 'Enviando...'; // Or 'Procesando...'
+  
+          const formData = new FormData(form);
+  
           fetch(form.action, {
-            method: 'POST',
-            body: formData
+              method: 'POST',
+              body: formData
           })
-          .then(response => response.json()) // Parse the JSON response
+          .then(response => response.json())
           .then(data => {
-            if (data.result === 'success') {
-              // Display a success message
-              alert('Message sent successfully!');
-              form.reset(); // Optionally reset the form
-            } else {
-              // Display an error message
-              alert('Error sending message. Please try again.');
-            }
+              if (data.result === 'success') {
+                  alert('Message sent successfully!');
+                  form.reset();
+                  // Reset button state after success
+                  submitButton.disabled = false;
+                  submitButton.textContent = 'Enviar';
+              } else {
+                  alert('Error sending message. Please try again.');
+                  // Reset button state after error
+                  submitButton.disabled = false;
+                  submitButton.textContent = 'Enviar';
+              }
           })
           .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
+              console.error('Error:', error);
+              alert('An error occurred. Please try again later.');
+              // Reset button state after error
+              submitButton.disabled = false;
+              submitButton.textContent = 'Enviar';
           });
-        });
-      </script>
+      });
+  </script>
 </body>
 
 </html>
