@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload a File</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+    }
+    #status {
+      margin-top: 1em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Upload a File</h2>
+  <form id="uploadForm">
+    <input type="file" id="file" required />
+    <br><br>
+    <button type="submit">Send File</button>
+  </form>
+  <p id="status"></p>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fileInput = document.getElementById('file');
+      const file = fileInput.files[0];
+
+      if (!file) {
+        status.textContent = "Please select a file.";
+        return;
+      }
+
+      if (file.size > 6 * 1024 * 1024) {
+        status.textContent = "File is too large. Max allowed size is 6MB.";
+        return;
+      }
+
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        const base64Data = event.target.result.split(',')[1];
+
+        fetch("https://script.google.com/macros/s/AKfycbyGI5_nu0NTxkETNqDYMMxyK51gcQjPmOLJqE1AFJ8lXVptRv4-IPu4O3vwcoKsQXcI/exec", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            filename: file.name,
+            base64: base64Data
+          })
+        })
+        .then(response => response.text())
+        .then(message => {
+          status.textContent = message;
+        })
+        .catch(error => {
+          console.error(error);
+          status.textContent = "Upload failed: " + error.message;
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
