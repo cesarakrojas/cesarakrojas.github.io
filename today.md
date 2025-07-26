@@ -16,6 +16,17 @@ npm run dev
 
 ## ✨ Features
 
+### ⚙️ Configurable Settings System
+- **Gear Icon Access**: Settings accessible from all module headers with animated gear icons
+- **Payment Methods Management**: Full CRUD operations for sales payment methods
+- **Extensible Architecture**: Ready for additional module-specific configurations
+- **Professional UI**: Modal-based settings with sidebar navigation
+
+### 🎨 Custom Professional Theme
+- **Green Color Scheme**: Custom branded navigation (#4A9462, #376F49)
+- **Consistent Design**: Professional appearance across all modules
+- **Accessible**: Maintained focus states and hover interactions
+
 ### 👥 Contact Management
 - Manage customers and vendors with detailed contact information
 - Advanced filtering and search capabilities
@@ -30,6 +41,8 @@ npm run dev
 - Create sales orders with multiple line items
 - Automatic inventory reduction and financial recording
 - Discount management and order tracking
+- **Configurable Payment Methods**: Cash, Credit Card, Bank Transfer, PayPal, and custom options
+
 
 ### 📊 Financial Tracking
 - Real-time transaction monitoring (income/expenses)
@@ -60,8 +73,16 @@ src/
 │   ├── balance/           # Financial transaction routes
 │   └── inventory/         # Inventory management routes
 ├── components/            # Reusable UI components
+│   ├── GearIcon.tsx       # Animated settings gear icon
+│   ├── SettingsModal.tsx  # Main settings modal component
+│   ├── PaymentMethodsManager.tsx # Payment methods configuration
+│   └── ...               # Other UI components
 ├── lib/                   # Business logic and data handling
+│   ├── settings.ts        # Settings management system
+│   └── ...               # Other business logic modules
 ├── types/                 # TypeScript type definitions
+│   ├── settings.ts        # Settings-related types
+│   └── ...               # Other type definitions
 └── hooks/                 # Custom React hooks
 ```
 
@@ -73,6 +94,23 @@ The system features sophisticated cross-module integration:
 - **Sales → Finance**: Revenue transactions are automatically recorded
 - **Purchases → Inventory**: Stock additions with weighted average costing
 - **Purchases → Finance**: Expense transactions are automatically recorded
+- **Settings Integration**: Configurable payment methods flow through sales processing
+- **Cross-Module Settings**: Unified settings system accessible from all modules
+
+## ⚙️ Settings & Configuration
+
+### Payment Methods Management
+- **Default Options**: Cash, Credit Card, Bank Transfer, PayPal
+- **Custom Methods**: Add, edit, and organize payment options
+- **Categories**: Organize by type (Cash, Card, Bank Transfer, Digital, Other)
+- **Status Control**: Enable/disable methods without deletion
+- **Business Rules**: Protected default method with validation
+
+### Accessing Settings
+1. Click the gear icon (⚙️) in any module header
+2. Navigate through the sidebar for different settings categories
+3. Currently available: Payment Methods (Sales module)
+4. Future: Tax settings, contact validation, inventory thresholds, and more
 
 ## 🤝 Contributing
 
@@ -85,13 +123,26 @@ The system features sophisticated cross-module integration:
 ### Development Guidelines
 
 - Follow TypeScript best practices
-- Use Tailwind CSS for styling
+- Use Tailwind CSS for styling (custom green theme: #4A9462, #376F49)
 - Maintain modular component architecture
 - Write descriptive commit messages
 - Test cross-module integrations
+- Use the settings system for configurable features
+- Follow established patterns when adding new module settings
+
 
 ## 🔮 Roadmap
 
+### ✅ Recently Completed
+- [x] **Configurable Settings System**: Gear icons and payment methods management
+- [x] **Custom Green Theme**: Professional branding with custom colors
+- [x] **Cross-Module Integration**: Automated inventory and financial updates
+
+### 🎯 Next Phase
+- [ ] Extended settings for all modules (tax, validation, thresholds)
+- [ ] Advanced payment method integration in sales workflow
+
+### 🚀 Future Plans
 - [ ] Firebase backend integration
 - [ ] User authentication and authorization
 - [ ] Advanced reporting and analytics
