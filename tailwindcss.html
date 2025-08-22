@@ -98,9 +98,15 @@
             <!-- Product A -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
                 <div class="flex items-start justify-between mb-3">
-                    <div class="flex-1">
-                        <h3 class="text-base font-semibold text-gray-900">Product A</h3>
-                        <p class="text-sm text-gray-500">SKU: 45345345</p>
+                    <div class="flex items-center space-x-3 flex-1">
+                        <!-- Product Image -->
+                        <img src="https://via.placeholder.com/48" alt="Product A" 
+                             class="w-12 h-12 rounded-md object-cover border border-gray-200">
+                        <!-- Product Details -->
+                        <div>
+                            <h3 class="text-base font-semibold text-gray-900">Product A</h3>
+                            <p class="text-sm text-gray-500">SKU: 45345345</p>
+                        </div>
                     </div>
                     <div class="bg-warning text-white px-2 py-1 rounded-full">
                         <span class="text-xs font-medium">Alert</span>
@@ -128,9 +134,15 @@
             <!-- Product C -->
             <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
                 <div class="flex items-start justify-between mb-3">
-                    <div class="flex-1">
-                        <h3 class="text-base font-semibold text-gray-900">Product C</h3>
-                        <p class="text-sm text-gray-500">SKU: 43431</p>
+                    <div class="flex items-center space-x-3 flex-1">
+                        <!-- Product Image -->
+                        <img src="https://via.placeholder.com/48" alt="Product C" 
+                             class="w-12 h-12 rounded-md object-cover border border-gray-200">
+                        <!-- Product Details -->
+                        <div>
+                            <h3 class="text-base font-semibold text-gray-900">Product C</h3>
+                            <p class="text-sm text-gray-500">SKU: 43431</p>
+                        </div>
                     </div>
                     <div class="bg-success text-white px-2 py-1 rounded-full">
                         <span class="text-xs font-medium">OK</span>
@@ -160,36 +172,12 @@
     <!-- Bottom Navigation Spacer -->
     <div class="h-20"></div>
 
-    <!-- Bottom Navigation -->
-    <nav class="hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2">
-        <div class="flex justify-around">
-            <button class="flex flex-col items-center space-y-1 py-2 px-3 text-primary">
-                <i class="fas fa-boxes text-lg"></i>
-                <span class="text-xs font-medium">Inventory</span>
-            </button>
-            <button class="flex flex-col items-center space-y-1 py-2 px-3 text-gray-400">
-                <i class="fas fa-chart-bar text-lg"></i>
-                <span class="text-xs">Reports</span>
-            </button>
-            <button class="flex flex-col items-center space-y-1 py-2 px-3 text-gray-400">
-                <i class="fas fa-cog text-lg"></i>
-                <span class="text-xs">Settings</span>
-            </button>
-            <button class="flex flex-col items-center space-y-1 py-2 px-3 text-gray-400">
-                <i class="fas fa-user text-lg"></i>
-                <span class="text-xs">Profile</span>
-            </button>
-        </div>
-    </nav>
-
     <script>
         // Add some interactive functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Add click handlers for buttons
             const buttons = document.querySelectorAll('button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    // Add ripple effect
                     const ripple = document.createElement('span');
                     const rect = this.getBoundingClientRect();
                     const size = Math.max(rect.width, rect.height);
@@ -248,4 +236,3 @@
     </style>
 </body>
 </html>
-
