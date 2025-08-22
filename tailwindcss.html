@@ -96,75 +96,85 @@
         <!-- Product List -->
         <div class="space-y-3">
             <!-- Product A -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-start justify-between mb-3">
-                    <div class="flex items-center space-x-3 flex-1">
-                        <!-- Product Image -->
-                        <img src="https://via.placeholder.com/48" alt="Product A" 
-                             class="w-12 h-12 rounded-md object-cover border border-gray-200">
-                        <!-- Product Details -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex space-x-4">
+                <!-- Left: Large Image -->
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/72" alt="Product A" class="w-20 h-20 rounded-md object-cover border border-gray-200">
+                </div>
+
+                <!-- Right: Original Content -->
+                <div class="flex-1 flex flex-col justify-between">
+                    <!-- Top Row: Name + Status -->
+                    <div class="flex items-start justify-between mb-3">
                         <div>
                             <h3 class="text-base font-semibold text-gray-900">Product A</h3>
                             <p class="text-sm text-gray-500">SKU: 45345345</p>
                         </div>
+                        <div class="bg-warning text-white px-2 py-1 rounded-full">
+                            <span class="text-xs font-medium">Alert</span>
+                        </div>
                     </div>
-                    <div class="bg-warning text-white px-2 py-1 rounded-full">
-                        <span class="text-xs font-medium">Alert</span>
+
+                    <!-- Stock & Price Grid -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">Stock</p>
+                            <p class="text-lg font-bold text-gray-900">12</p>
+                            <p class="text-xs text-warning font-medium">Overstock</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">Sale Price</p>
+                            <p class="text-lg font-bold text-success">$15.00</p>
+                        </div>
                     </div>
+
+                    <!-- Button -->
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fas fa-chart-line text-xs"></i>
+                        <span>View Movements</span>
+                    </button>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Stock</p>
-                        <p class="text-lg font-bold text-gray-900">12</p>
-                        <p class="text-xs text-warning font-medium">Overstock</p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Sale Price</p>
-                        <p class="text-lg font-bold text-success">$15.00</p>
-                    </div>
-                </div>
-                
-                <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
-                    <i class="fas fa-chart-line text-xs"></i>
-                    <span>View Movements</span>
-                </button>
             </div>
 
             <!-- Product C -->
-            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <div class="flex items-start justify-between mb-3">
-                    <div class="flex items-center space-x-3 flex-1">
-                        <!-- Product Image -->
-                        <img src="https://via.placeholder.com/48" alt="Product C" 
-                             class="w-12 h-12 rounded-md object-cover border border-gray-200">
-                        <!-- Product Details -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex space-x-4">
+                <!-- Left: Large Image -->
+                <div class="flex-shrink-0">
+                    <img src="https://via.placeholder.com/72" alt="Product C" class="w-20 h-20 rounded-md object-cover border border-gray-200">
+                </div>
+
+                <!-- Right: Original Content -->
+                <div class="flex-1 flex flex-col justify-between">
+                    <!-- Top Row: Name + Status -->
+                    <div class="flex items-start justify-between mb-3">
                         <div>
                             <h3 class="text-base font-semibold text-gray-900">Product C</h3>
                             <p class="text-sm text-gray-500">SKU: 43431</p>
                         </div>
+                        <div class="bg-success text-white px-2 py-1 rounded-full">
+                            <span class="text-xs font-medium">OK</span>
+                        </div>
                     </div>
-                    <div class="bg-success text-white px-2 py-1 rounded-full">
-                        <span class="text-xs font-medium">OK</span>
+
+                    <!-- Stock & Price Grid -->
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">Stock</p>
+                            <p class="text-lg font-bold text-gray-900">4</p>
+                            <p class="text-xs text-success font-medium">Normal</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase tracking-wide">Sale Price</p>
+                            <p class="text-lg font-bold text-success">$18.00</p>
+                        </div>
                     </div>
+
+                    <!-- Button -->
+                    <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+                        <i class="fas fa-chart-line text-xs"></i>
+                        <span>View Movements</span>
+                    </button>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Stock</p>
-                        <p class="text-lg font-bold text-gray-900">4</p>
-                        <p class="text-xs text-success font-medium">Normal</p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Sale Price</p>
-                        <p class="text-lg font-bold text-success">$18.00</p>
-                    </div>
-                </div>
-                
-                <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
-                    <i class="fas fa-chart-line text-xs"></i>
-                    <span>View Movements</span>
-                </button>
             </div>
         </div>
     </div>
