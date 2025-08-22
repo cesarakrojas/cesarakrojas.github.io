@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Inventory Module</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-base-200">
+    <!-- Header -->
+    <div class="navbar bg-base-100 shadow-sm sticky top-0 z-10">
+        <div class="flex-1">
+            <div>
+                <h1 class="text-lg font-bold">ERP System</h1>
+                <p class="text-sm text-base-content/70">Inventory Module</p>
+            </div>
+        </div>
+        <div class="flex-none">
+            <div class="text-right">
+                <p class="text-xs text-base-content/50">Last updated:</p>
+                <p class="text-sm font-semibold">11:31:19 AM</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stock Alert Banner -->
+    <div class="alert alert-warning shadow-sm">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="flex-1">
+            <h3 class="font-bold">Stock Alerts (1)</h3>
+            <div class="text-xs">Product A: 12 units (Overstock)</div>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="p-4 bg-base-100">
+        <div class="grid grid-cols-3 gap-3">
+            <button class="btn btn-primary flex-col h-16">
+                <i class="fas fa-plus text-lg"></i>
+                <span class="text-xs">Add New</span>
+            </button>
+            <button class="btn btn-success flex-col h-16">
+                <i class="fas fa-shopping-cart text-lg"></i>
+                <span class="text-xs">Purchase</span>
+            </button>
+            <button class="btn btn-neutral flex-col h-16">
+                <i class="fas fa-adjust text-lg"></i>
+                <span class="text-xs">Adjust</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Stock Levels Section -->
+    <div class="p-4 space-y-4">
+        <div class="card bg-base-100 shadow-sm">
+            <div class="card-body">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="card-title text-base">Current Stock Levels</h2>
+                    <div class="badge badge-warning">1</div>
+                </div>
+                <p class="text-sm text-base-content/70 mb-4">Track product quantities and costs</p>
+                
+                <!-- Stock Alert Item -->
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div class="flex-1">
+                        <h3 class="font-bold">Stock Alerts (1)</h3>
+                        <div class="text-xs">Requires attention</div>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product List -->
+        <div class="space-y-3">
+            <!-- Product A -->
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex-1">
+                            <h3 class="card-title text-base">Product A</h3>
+                            <p class="text-sm text-base-content/70">SKU: 45345345</p>
+                        </div>
+                        <div class="badge badge-warning">Alert</div>
+                    </div>
+                    
+                    <div class="stats shadow-sm bg-base-200 mb-4">
+                        <div class="stat">
+                            <div class="stat-title text-xs">Stock</div>
+                            <div class="stat-value text-lg">12</div>
+                            <div class="stat-desc text-warning">Overstock</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title text-xs">Sale Price</div>
+                            <div class="stat-value text-lg text-success">$15.00</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline btn-sm w-full">
+                        <i class="fas fa-chart-line"></i>
+                        View Movements
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product C -->
+            <div class="card bg-base-100 shadow-sm">
+                <div class="card-body">
+                    <div class="flex items-start justify-between mb-3">
+                        <div class="flex-1">
+                            <h3 class="card-title text-base">Product C</h3>
+                            <p class="text-sm text-base-content/70">SKU: 43431</p>
+                        </div>
+                        <div class="badge badge-success">OK</div>
+                    </div>
+                    
+                    <div class="stats shadow-sm bg-base-200 mb-4">
+                        <div class="stat">
+                            <div class="stat-title text-xs">Stock</div>
+                            <div class="stat-value text-lg">4</div>
+                            <div class="stat-desc text-success">Normal</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-title text-xs">Sale Price</div>
+                            <div class="stat-value text-lg text-success">$18.00</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-outline btn-sm w-full">
+                        <i class="fas fa-chart-line"></i>
+                        View Movements
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Spacer -->
+    <div class="h-20"></div>
+
+    <!-- Bottom Navigation -->
+    <div class="btm-nav">
+        <button class="active">
+            <i class="fas fa-boxes"></i>
+            <span class="btm-nav-label">Inventory</span>
+        </button>
+        <button>
+            <i class="fas fa-chart-bar"></i>
+            <span class="btm-nav-label">Reports</span>
+        </button>
+        <button>
+            <i class="fas fa-cog"></i>
+            <span class="btm-nav-label">Settings</span>
+        </button>
+        <button>
+            <i class="fas fa-user"></i>
+            <span class="btm-nav-label">Profile</span>
+        </button>
+    </div>
+
+    <script>
+        // Add some interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Add ripple effect for DaisyUI buttons
+                    this.classList.add('btn-active');
+                    setTimeout(() => {
+                        this.classList.remove('btn-active');
+                    }, 150);
+                });
+            });
+
+            // Add theme toggle functionality (optional)
+            const themeToggle = document.createElement('button');
+            themeToggle.className = 'btn btn-ghost btn-circle fixed top-4 right-4 z-20';
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            themeToggle.onclick = function() {
+                const html = document.documentElement;
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                html.setAttribute('data-theme', newTheme);
+                this.innerHTML = newTheme === 'light' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+            };
+            document.body.appendChild(themeToggle);
+        });
+    </script>
+</body>
+</html>
+
